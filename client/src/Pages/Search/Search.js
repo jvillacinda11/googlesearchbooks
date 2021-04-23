@@ -1,7 +1,8 @@
-const Search = () => {
+function Search() {
   return(
     <>
-  <h1>This is the Search page</h1>
+  <h1>Search Page</h1>
     </>
   )
 }
+export default Search
