@@ -6,7 +6,7 @@ import axios from 'axios'
 function Search() {
   const [booksState, setBooksState] = useState({
     title: '',
-    booklist: []
+    books: []
   })
   
     const handleInputChange = ({ target }) => {
@@ -17,23 +17,17 @@ function Search() {
       event.preventDefault()
       //change this to the books api
       axios.get(`https://www.googleapis.com/books/v1/volumes?q=${booksState.title}&key=AIzaSyCjqmP_CsJ3FG_NpGK89nfrDbiFmJi1Ifc`)
-        .then(({ data: books }) => {
+        .then(({ data: { items: books } }) => {
           console.log(books)
-          setBooksState({ ...booksState, booklist: books, title: '' })
-          console.log(booksState.booklist)
-          console.log(booksState.booklist.items.volumeInfo.title)
+          setBooksState({ ...booksState, books, title: '' })
 
         })
         .catch(err => console.error(err))
     }
-  // Might not use this useEffect
-    // useEffect(() => {
-    //   axios.get('http://www.omdbapi.com/?apikey=trilogy&t=Goodfellas')
-    //     .then(({ data: movie }) => {
-    //       setMovieState({ ...movieState, movie, title: '' })
-    //     })
-    //     .catch(err => console.error(err))
-    // }, [])
+  const view = () => {
+    alert('hi')
+  }
+
   return(
     <>
     <h1>Search for books here</h1>
@@ -50,8 +44,8 @@ function Search() {
         <button onClick={handleSearchBooks}>Search Books</button>
       </form>
    {
-     booksState.booklist
-     ? booksState.booklist.map((books, i) => <Render key={i} title= {books.item.volumeInfo.title} authors= {books.item.volumeInfo.authors} description = {books.item.volumeInfo.description} image= {books.item.volumeInfo.imageLinks.thumbnail}/>)
+     booksState.books.length
+     ? booksState.books.map((book, i) => <Render key={i} title= {book.volumeInfo.title} authors= {book.volumeInfo.authors} description = {book.volumeInfo.description} image= {book.volumeInfo.imageLinks.thumbnail} link={book.volumeInfo.infoLink}/>)
      :null
    }
     </>

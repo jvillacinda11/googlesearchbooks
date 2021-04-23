@@ -5,20 +5,14 @@ import {
   Col
 } from 'reactstrap';
 
-const Render = ({title, authors, description, image, link}) => {
- const save = () => {
-//   Post.save({
-//     title: ,
-//     authors: ,
-//     description: ,
-//     image: ,
-//     link: ,
-  // })
- }
- const view = () => {
-   window.open(`${link}`, "_blank")
+const RenderSaved = ({title, authors, description, image, link}) => {
+const view =()=> {
+  window.open(`${link}`, "_blank")
+}
 
- }
+const remove = ()=> {
+console.log('ping')
+}
 
   return(
     <>
@@ -29,10 +23,15 @@ const Render = ({title, authors, description, image, link}) => {
             <CardTitle tag="h5">{title}</CardTitle>
             <CardSubtitle tag="h6" className="mb-2 text-muted">Authors: {authors ? authors.map(author => `${author}, `) : 'Unknown'}</CardSubtitle>
             <CardText>{description}</CardText>
- 
+
             <CardSubtitle>
 
-              <Button color='light' light expand='md' onClick= {view} >View</Button><Button color='light' light expand='md' onClick= {save}>Save</Button>
+              <Button color='light' light expand='md' onClick={view} >
+                View
+              </Button>
+              <Button color='light' light expand='md' onClick={remove}>
+                Remove
+              </Button>
 
             </CardSubtitle>
           </CardBody>
@@ -42,4 +41,4 @@ const Render = ({title, authors, description, image, link}) => {
   )
 }
 
-export default Render 
+export default RenderSaved
