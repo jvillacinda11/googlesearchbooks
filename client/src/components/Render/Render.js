@@ -4,16 +4,19 @@ import {
   CardTitle, CardSubtitle, Button,
   Col
 } from 'reactstrap';
+import Post from '../../utils/Posts'
 
 const Render = ({title, authors, description, image, link}) => {
  const save = () => {
-//   Post.save({
-//     title: ,
-//     authors: ,
-//     description: ,
-//     image: ,
-//     link: ,
-  // })
+  Post.save({
+    title: title,
+    authors: authors,
+    description: description,
+    image: image,
+    link: link,
+  })
+  .then(book => console.log(book))
+  .catch(err => console.log(err))
  }
  const view = () => {
    window.open(`${link}`, "_blank")

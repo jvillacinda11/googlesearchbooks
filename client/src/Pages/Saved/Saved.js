@@ -29,7 +29,7 @@ function Saved() {
         <Row>
           {
             postState.posts.length
-              ? postState.posts.map((book, i) => <RenderSaved key={i} title={book.title} authors={book.authors} description={book.description} image={book.image} link= {book.link} />)
+              ? postState.posts.map((book, i) => <RenderSaved key={i} title={book.title} authors={book.authors} description={book.description} image={book.image} link= {book.link} id = {book._id} />)
               : null
           }
         </Row>

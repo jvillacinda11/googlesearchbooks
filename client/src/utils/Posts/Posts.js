@@ -4,7 +4,7 @@ import axios from 'axios'
 const Post ={
   getAll: () => axios.get('/api/books'),
 
-  save: () => axios.post('/api/books')
+  save: book => axios.post('/api/books', book)
 
 }
 export default Post

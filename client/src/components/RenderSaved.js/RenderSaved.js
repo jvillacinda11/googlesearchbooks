@@ -4,14 +4,15 @@ import {
   CardTitle, CardSubtitle, Button,
   Col
 } from 'reactstrap';
+import axios from 'axios';
 
-const RenderSaved = ({title, authors, description, image, link}) => {
+const RenderSaved = ({title, authors, description, image, link, id}) => {
 const view =()=> {
   window.open(`${link}`, "_blank")
 }
 
 const remove = ()=> {
-console.log('ping')
+axios.delete('/api/books/')
 }
 
   return(

@@ -1,6 +1,8 @@
 import { useState, useEffect} from 'react'
 import Render from '../../components/Render'
 import axios from 'axios'
+import { Container, Row } from "reactstrap"
+
 
 // google books api key AIzaSyCjqmP_CsJ3FG_NpGK89nfrDbiFmJi1Ifc
 function Search() {
@@ -43,11 +45,16 @@ function Search() {
         </p>
         <button onClick={handleSearchBooks}>Search Books</button>
       </form>
-   {
+
+   <Container>
+     <Row>
+         {
      booksState.books.length
-     ? booksState.books.map((book, i) => <Render key={i} title= {book.volumeInfo.title} authors= {book.volumeInfo.authors} description = {book.volumeInfo.description} image= {book.volumeInfo.imageLinks.thumbnail} link={book.volumeInfo.infoLink}/>)
+          ? booksState.books.map((book, i) => <Render key={i} title={book.volumeInfo.title} authors={book.volumeInfo.authors} description={book.volumeInfo.description} image={book.volumeInfo.imageLinks.thumbnail} link={book.volumeInfo.infoLink}/>)
      :null
-   }
+   } 
+     </Row>
+     </Container>
     </>
   )
 }
