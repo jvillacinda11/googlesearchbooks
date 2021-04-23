@@ -12,7 +12,12 @@ const view =()=> {
 }
 
 const remove = ()=> {
-axios.delete('/api/books/')
+axios.delete(`/api/books/${id}`)
+.then(() =>{ 
+  console.log('ok')
+  window.location.reload()
+})
+.catch(err => console.log(err))
 }
 
   return(
