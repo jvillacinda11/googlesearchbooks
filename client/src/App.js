@@ -4,8 +4,8 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import Saved from './pages/Saved'
-import Search from './pages/Search'
+import Search from './pages/Search/index.js'
+import Saved from './pages/Saved/index.js'
 import AppBar from './components/AppBar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
